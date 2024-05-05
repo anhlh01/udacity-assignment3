@@ -2,7 +2,7 @@ FROM python:3.10-slim-buster
 
 WORKDIR /src
 
-COPY requirements.txt .
+COPY analytics/requirements.txt requirements.txt
 
 # Update the local package index with the latest packages from the repositories
 RUN apt update
@@ -23,5 +23,7 @@ ENV DB_PORT=5433
 ENV DB_NAME=mydatabase
 
 EXPOSE 5153
+
+COPY ./analytics .
 
 CMD python app.py
